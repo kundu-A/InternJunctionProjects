@@ -18,8 +18,6 @@ class GameAlgorithm{
     public void operationOnTable(char pos, char symbol)
     {
         conut++;
-        if(conut==9)
-            winChecker();
         char table[][]=board;
             for(int i=0;i<table.length;i++)
             {
@@ -31,6 +29,12 @@ class GameAlgorithm{
             }
         board=table;
         showBoard();
+        if(conut==9)
+        {
+            System.out.println("So, the final TIC-TAC-TOE board is: ");
+            showBoard();
+            winChecker();
+        }
     }
     public void takeInput(char input,String name)
     {
@@ -67,9 +71,9 @@ class GameAlgorithm{
         int toss=2;
         int win=random.nextInt(toss);
         if(win==0)
-            System.out.println(Xuser+" is Win.");
+            System.out.println(Xuser+" is Win the toss.........");
         else
-            System.out.println(Ouser+" is win.");
+            System.out.println(Ouser+" is win the toss.........");
         GameAlgorithm drawTable=new GameAlgorithm();
         drawTable.moveOfUsers(Xuser,Ouser,win);
     }
@@ -90,7 +94,6 @@ class GameAlgorithm{
         }
 
     }
-    //A problem arises---have to sovle.
     public void winChecker()
     {
         if((board[0][0]=='X' && board[1][0]=='X' && board[2][0]=='X') || (board[0][0]=='X' && board[0][1]=='X' && board[0][2]=='X') || (board[0][1]=='X' && board[1][1]=='X' && board[2][1]=='X') || (board[1][0]=='X' && board[1][1]=='X' && board[1][2]=='X') || (board[0][2]=='X' && board[1][2]=='X' && board[2][2]=='X') || (board[2][0]=='X' && board[2][1]=='X' && board[2][2]=='X')){
