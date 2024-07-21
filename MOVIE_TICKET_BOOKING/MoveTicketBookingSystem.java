@@ -105,13 +105,13 @@ class Customer
             System.out.println("You choose 07.00PM slot");
         System.out.println("How many ticket do you want to book? ");
         ticketcount=scan.nextInt();
-        scan.close();
         makePayment(ticketcount,c);
+        scan.close();
 
     }
     public void makePayment(int ticketcount,int c)
     {
-        Scanner sc=new Scanner(System.in);
+        Scanner scan=new Scanner(System.in);
         int total=0;
         if(c==1)
             total=ticketcount*250;
@@ -121,10 +121,10 @@ class Customer
             total=ticketcount*150;
         System.out.println("So, you total amount is: "+total);
         System.out.println("Press '1' for Online\tPress '2' for Cash: ");
-        int mode=sc.nextInt();
-        if(mode==1){
+        String mode=scan.next();
+        if(mode.equals("1")){
             System.out.println("Enter your amount: ");
-            int amount=sc.nextInt();
+            int amount=scan.nextInt();
             if(amount==total)
                 System.out.println("You money is accepted.");
             else
@@ -133,7 +133,7 @@ class Customer
         else
         {
             System.out.println("Enter your amount: ");
-            int amount=sc.nextInt();
+            int amount=scan.nextInt();
             if(amount==total)
                 System.out.println("You money is accepted.");
             else
@@ -141,21 +141,21 @@ class Customer
         }
         System.out.println("You "+ticketcount+"tickets are confirmed!!");
         System.out.println("If you want to cancel then press 'C' or press anything: ");
-        int can=sc.next().toUpperCase().charAt(0);
+        int can=scan.next().toUpperCase().charAt(0);
         if(can=='C')
             cancel();
         else
             System.out.println("Thank you!!\tVisit Agian!!");
-        sc.close();
-    }
+        scan.close();
+}
     public void section()
     {
+        Scanner sc=new Scanner(System.in);
         char ch=' ';
         try{      
         System.out.println("Hey, Welcome to the Customer Desk......\nAt that time our collections are:\nComedy,Thrillers,Action,Detective,Suspence,Horror,etc");
         System.out.println("So,What type of movie are you looking for: \nPlease Select from the below list: ");
         System.out.println("Press 'A' for Action\tPress 'C' for Comedy\tPress 'T' for Thrillers\tPress 'D' for Detective\tPress 'S' for Suspence\tPress 'H' for Horror: ");
-        Scanner sc=new Scanner(System.in);
         ch=sc.next().toUpperCase().charAt(0);
         }
         catch(Exception e){
@@ -178,6 +178,7 @@ class Customer
                      section();
                 break;
         }
+        sc.close();
     }
     public void cancel()
     {
@@ -197,7 +198,7 @@ class Customer
             else
                 System.out.println("Ok!!");
         }
-        //sc.close();
+        sc.close();
     }
 }
 public class MoveTicketBookingSystem {
@@ -206,12 +207,13 @@ public class MoveTicketBookingSystem {
         Customer customer=new Customer();
         System.out.println("Welcome to the  one stop solution of movies!!");
         System.out.println("press 1 for booking\tPress 2 for canceling: ");
-        int ch=sc.nextInt();
+            int ch=sc.nextInt();
         if (ch==1) {
             customer.addMovies();
         }
         else
             customer.cancel();
-        sc.close();
+            sc.close();
+        
     }
 }
