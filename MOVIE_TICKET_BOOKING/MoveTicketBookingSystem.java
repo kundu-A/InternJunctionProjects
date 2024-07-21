@@ -178,7 +178,6 @@ class Customer
                      section();
                 break;
         }
-        sc.close();
     }
     public void cancel()
     {
@@ -198,7 +197,7 @@ class Customer
             else
                 System.out.println("Ok!!");
         }
-        sc.close();
+        //sc.close();
     }
 }
 public class MoveTicketBookingSystem {
